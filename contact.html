@@ -20,12 +20,15 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
                         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="tabletop.html">Tabletop</a></li>
                         <li class="nav-item"><a class="nav-link" href="lore.html">Lore & Books</a></li>
                         <li class="nav-item"><a class="nav-link" href="games.html">Video Games</a></li>
                         <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                            <button id="themeToggleBtn" class="btn btn-sm btn-outline-warning fw-bold">Light Mode</button>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -36,49 +39,62 @@
         <section class="text-center mb-5">
             <h1 class="display-4 fw-bold text-white mb-4">Join the Ranks</h1>
             <p class="lead text-white">
-                Ready to pledge your allegiance? Contact your local tabletop club, subscribe to our grimdark newsletter, or send a transmission directly to the Inquisition. The Emperor protect.
+                Ready to pledge your allegiance? Contact your local tabletop club, subscribe to our grimdark newsletter, or send a transmission directly to the Inquisition. The Emperor protects.
             </p>
         </section>
 
         <section class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="contact-form-container">
-                    <form action="#" method="POST">
+                    <form id="contactForm" action="#" method="POST" novalidate>
                         
                         <div class="mb-3">
                             <label for="userName" class="form-label text-warning">Full Name / Designation</label>
-                            <input type="text" class="form-control custom-input" id="userName" placeholder="Enter your name" required>
+                            <input type="text" class="form-control custom-input" id="userName" placeholder="Enter your name (min 3 characters)">
+                            <div class="validation-error" id="nameError"></div>
                         </div>
 
                         <div class="mb-3">
                             <label for="userEmail" class="form-label text-warning">Astropathic Relay (Email)</label>
-                            <input type="email" class="form-control custom-input" id="userEmail" placeholder="Enter your email" required>
+                            <input type="email" class="form-control custom-input" id="userEmail" placeholder="Enter your email (e.g. inquisitor@terra.gov)">
+                            <div class="validation-error" id="emailError"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="userAge" class="form-label text-warning">Recruit Age (14 - 120)</label>
+                            <input type="number" class="form-control custom-input" id="userAge" placeholder="Enter your age">
+                            <div class="validation-error" id="ageError"></div>
                         </div>
 
                         <div class="mb-3">
                             <label for="factionSelect" class="form-label text-warning">Choose Your Allegiance</label>
-                            <select class="form-select custom-input" id="factionSelect" required>
+                            <select class="form-select custom-input" id="factionSelect">
                                 <option value="" selected disabled>Select a faction...</option>
                                 <option value="imperium">Imperium of Man</option>
                                 <option value="chaos">Forces of Chaos</option>
                                 <option value="xenos">Xenos (Orks, Tyranids, Eldar, etc.)</option>
                                 <option value="undecided">I need more guidance</option>
                             </select>
+                            <div class="validation-error" id="factionError"></div>
                         </div>
 
                         <div class="mb-4">
-                            <label for="userMessage" class="form-label text-warning">Transmission Content</label>
-                            <textarea class="form-control custom-input" id="userMessage" rows="5" placeholder="Write your message here..." required></textarea>
+                            <label for="userMessage" class="form-label text-warning">Transmission Content (<span id="charCount">0</span>/15 min chars)</label>
+                            <textarea class="form-control custom-input" id="userMessage" rows="5" placeholder="Write your message here (minimum 15 characters)..."></textarea>
+                            <div class="validation-error" id="messageError"></div>
                         </div>
 
                         <button type="submit" class="btn btn-warning w-100 fw-bold fs-5">SEND TRANSMISSION</button>
 
+                        <div id="formSuccessBox" class="success-banner mt-4 d-none"></div>
                     </form>
                 </div>
             </div>
         </section>
     </main>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

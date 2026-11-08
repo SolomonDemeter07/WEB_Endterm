@@ -2,6 +2,43 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #121212;
     color: #e0e0e0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme {
+    background-color: #f4efe6;
+    color: #1f1f1f;
+}
+
+body.light-theme h1,
+body.light-theme p.lead {
+    color: #1f1f1f !important;
+}
+
+body.light-theme .hero-section h1,
+body.light-theme .hero-section p.lead {
+    color: #ffffff !important;
+}
+
+body.light-theme .game-card,
+body.light-theme .contact-form-container,
+body.light-theme .tab-display-card,
+body.light-theme .reading-list-panel,
+body.light-theme .filter-bar,
+body.light-theme .faction-details {
+    background-color: #ffffff;
+    color: #1f1f1f;
+    border-color: #b8860b;
+}
+
+body.light-theme .game-content p {
+    color: #333333;
+}
+
+body.light-theme .custom-input {
+    background-color: #fffdf9;
+    color: #1f1f1f;
+    border-color: #aaa;
 }
 
 .custom-navbar {
@@ -9,7 +46,6 @@ body {
     backdrop-filter: blur(5px);
     border-bottom: 2px solid #ffc107;
 }
-
 
 .hero-section {
     height: 100vh; 
@@ -20,7 +56,7 @@ body {
 .custom-navbar img {
     height: 40px;
     width: auto;
-    display: block
+    display: block;
 }
 
 .highlight {
@@ -28,7 +64,13 @@ body {
     font-weight: bold;
 }
 
-
+.tab-display-card {
+    max-width: 750px;
+    background-color: #1a1a1a;
+    border: 2px solid #ffc107;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
 
 @media (max-width: 768px) {
     .hero-section h1 {
@@ -46,40 +88,6 @@ body {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*TABLETOP PAGE*/
-
 .tabletop-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -94,6 +102,7 @@ body {
     border: 2px solid #ffc107;
     aspect-ratio: 1 / 1;
     background-color: #1a1a1a;
+    cursor: pointer;
 }
 
 .grid-item img {
@@ -119,7 +128,6 @@ body {
     transition: transform 0.4s ease;
 }
 
-
 .grid-item:hover img {
     transform: scale(1.1); 
 }
@@ -128,7 +136,35 @@ body {
     transform: translateY(0);
 }
 
+.faction-details {
+    display: none;
+    background-color: #1a1a1a;
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
 
+.lightbox-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.lightbox-box img {
+    max-width: 90vw;
+    max-height: 75vh;
+    border: 3px solid #ffc107;
+    border-radius: 10px;
+    object-fit: contain;
+}
 
 @media (max-width: 768px) {
     .tabletop-grid {
@@ -146,19 +182,6 @@ body {
     color: #ffffff;
     text-decoration: underline; 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-/*LORE PAGE */
 
 .custom-table {
     border: 2px solid #ffc107;
@@ -182,37 +205,23 @@ body {
     background-color: rgba(255, 193, 7, 0.05) !important;
 }
 
+.reading-list-panel,
+.filter-bar {
+    background-color: #1a1a1a;
+    border: 1px solid #ffc107;
+    border-radius: 10px;
+}
 
+.reading-item {
+    background-color: #121212;
+    color: #e0e0e0;
+    border: 1px solid #333;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* GAMES PAGE*/
-
+.reading-item.completed-book span {
+    text-decoration: line-through;
+    color: #888;
+}
 
 .games-container {
     display: flex;
@@ -220,7 +229,6 @@ body {
     justify-content: center;
     gap: 30px;
 }
-
 
 .game-card {
     display: flex;
@@ -232,7 +240,6 @@ body {
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
-
 
 .game-card:hover {
     transform: translateY(-10px);
@@ -246,7 +253,6 @@ body {
     object-fit: cover;
 }
 
-
 .game-content {
     display: flex;
     flex-direction: column;
@@ -259,45 +265,6 @@ body {
     font-size: 0.95rem;
     line-height: 1.6;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* CONTACT PAGE */
 
 .contact-form-container {
     background-color: #1a1a1a;
@@ -329,10 +296,27 @@ body {
     color: #e0e0e0;
 }
 
+.input-error-border {
+    border-color: #dc3545 !important;
+}
 
+.input-valid-border {
+    border-color: #198754 !important;
+}
 
+.validation-error {
+    color: #ff6b6b;
+    font-size: 0.875rem;
+    margin-top: 5px;
+    min-height: 20px;
+}
 
-
-
-
-
+.success-banner {
+    background-color: rgba(25, 135, 84, 0.2);
+    border: 1px solid #198754;
+    color: #75b798;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}

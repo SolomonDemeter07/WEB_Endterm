@@ -20,12 +20,15 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
                         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="tabletop.html">Tabletop</a></li>
                         <li class="nav-item"><a class="nav-link active" href="lore.html">Lore & Books</a></li>
                         <li class="nav-item"><a class="nav-link" href="games.html">Video Games</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                            <button id="themeToggleBtn" class="btn btn-sm btn-outline-warning fw-bold">Light Mode</button>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -50,6 +53,7 @@
                             <th scope="col">Era / Series</th>
                             <th scope="col">Must Read (Core Novels)</th>
                             <th scope="col">Additional Reading</th>
+                            <th scope="col">Bookmark</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,63 +61,13 @@
                             <td class="fw-bold">The Horus Heresy (30K)</td>
                             <td>
                                 <ul class="mb-0 text-start">
-                                    <li>    1.   Horus Rising
-                                            2.   False Gods
-                                            3.   Galaxy in Flames
-                                            4.	The Flight of the Eisenstein
-                                            5.	Fulgrim
-                                            6.	Descent of Angels
-                                            7.	Legion
-                                            8.	Battle for the Abyss
-                                            9.	Mechanicum
-                                            10.	Tales of Heresy
-                                            11.	Fallen Angels
-                                            12.	A Thousand Sons
-                                            13.	Nemesis
-                                            14.	The First Heretic
-                                            15.	Prospero Burns
-                                            16.	Age of Darkness
-                                            17.	The Outcast Dead
-                                            18.	Deliverance Lost
-                                            19.	Know No Fear
-                                            20.	The Primarchs
-                                            21.	Fear to Tread
-                                            22.	Shadows of Treachery
-                                            23.	Angel Exterminatus
-                                            24.	Betrayer
-                                            25.	Mark of Calth
-                                            26.	Vulkan Lives
-                                            27.	The Unremembered Empire
-                                            28.	Scars
-                                            29.	Vengeful Spirit
-                                            30.	The Damnation of Pythos
-                                            31.	Legacies of Betrayal
-                                            32.	Deathfire
-                                            33.	War Without End
-                                            34.	Pharos
-                                            35.	Eye of Terra
-                                            36.  The Path of Heaven
-                                            37.	The Silent War
-                                            38.	Angels of Caliban
-                                            39.	Praetorian of Dorn
-                                            40.	Corax
-                                            41.	The Master of Mankind
-                                            42.	Garro
-                                            43.	Shattered Legions
-                                            44.	The Crimson King
-                                            45.	Tallarn
-                                            46. Ruinstorm
-                                            47.	Old Earth
-                                            48. The Burden of Loyalty
-                                            49.	Wolfsbane
-                                            50.	Born of Flame
-                                            51.	Slaves to Darkness
-                                            52.	Heralds of the Siege
-                                            53.	Titandeath
-                                            54.	The Buried Dagger</li>
+                                    <li>1. Horus Rising, 2. False Gods, 3. Galaxy in Flames, 4. The Flight of the Eisenstein, 5. Fulgrim, 12. A Thousand Sons, 14. The First Heretic, 19. Know No Fear, 24. Betrayer, 41. The Master of Mankind</li>
                                 </ul>
                             </td>
-                            <td>The Solar War, Lost of the Damned, The First Wall, Mortis...</td>
+                            <td>The Solar War, Lost and the Damned, Saturnine, Mortis, Echoes of Eternity, The End and the Death</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-warning add-bookmark-btn" data-book="Horus Rising (The Horus Heresy)">+ Add to List</button>
+                            </td>
                         </tr>
                         <tr>
                             <td class="fw-bold">The Inquisition (40K)</td>
@@ -125,6 +79,9 @@
                                 </ul>
                             </td>
                             <td>The Ravenor Omnibus, The Bequin Series...</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-warning add-bookmark-btn" data-book="Eisenhorn: Xenos (Inquisition)">+ Add to List</button>
+                            </td>
                         </tr>
                         <tr>
                             <td class="fw-bold">Space Marines & Imperial Guard</td>
@@ -135,6 +92,9 @@
                                 </ul>
                             </td>
                             <td>Helsreach, The Devastation of Baal, Ciaphas Cain...</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-warning add-bookmark-btn" data-book="Dark Imperium (Space Marines)">+ Add to List</button>
+                            </td>
                         </tr>
                         <tr>
                             <td class="fw-bold">Xenos Perspectives</td>
@@ -145,13 +105,33 @@
                                 </ul>
                             </td>
                             <td>The Twice-Dead King, Path of the Dark Eldar...</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-warning add-bookmark-btn" data-book="The Infinite and The Divine (Necrons)">+ Add to List</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
+
+        <section class="mb-5">
+            <div class="reading-list-panel p-4">
+                <h3 class="text-warning mb-3">My Personal Reading List (<span id="readingCount">0</span>)</h3>
+                <div class="row g-2 mb-3">
+                    <div class="col-md-9">
+                        <input type="text" id="customBookInput" class="form-control custom-input" placeholder="Enter another Warhammer novel title (e.g. Helsreach)...">
+                    </div>
+                    <div class="col-md-3">
+                        <button id="addCustomBookBtn" class="btn btn-warning w-100 fw-bold">Add Novel</button>
+                    </div>
+                </div>
+                <ul id="readingListContainer" class="list-group"></ul>
+            </div>
+        </section>
     </main>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
